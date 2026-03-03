@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kiran ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background: #ffffff;
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.animated-name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #e91e63;
+    animation: pulse 2s infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: #e91e63;
+    font-weight: 600;
+}
+
+.memory-box {
+    background: #fff0f6;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.accept {
+    background: #e91e63;
+    color: white;
+}
+
+.accept:hover {
+    transform: scale(1.1);
+    background: #d81b60;
+}
+
+.reject {
+    background: #cccccc;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    display: none;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>I Am Truly Sorry 💔</h1>
+    <div class="animated-name">Kiran ❤️</div>
+
+    <p>
+        Kiran, I sincerely apologize for calling you <span class="highlight">"Chutiya"</span>. What I meant was "cunning" in a playful way, not as an insult. But I understand that it hurt you and came across the wrong way, and that is completely my fault.
+    </p>
+
+    <p>
+        You mean so much to me. Hurting you was the last thing I ever wanted.
+        I promise to always treat you with respect and kindness.
+    </p>
+
+    <div class="memory-box">
+        No matter what happens, I truly value our bond and all the beautiful memories we share. 🌸
+    </div>
+
+    <p class="highlight">Kiran, please forgive me ❤️</p>
+
+    <div class="buttons">
+        <button class="accept" onclick="acceptApology()">I Forgive You 💖</button>
+        <button class="reject" onmouseover="moveButton(this)">Still Angry 😒</button>
+    </div>
+
+    <div class="message" id="responseMessage"></div>
+</div>
+
+<script>
+
+(function(){
+    emailjs.init("YOUR_PUBLIC_KEY");
+})();
+
+function acceptApology(){
+    const msg = document.getElementById("responseMessage");
+    msg.style.display = "block";
+    msg.innerHTML = "Thank you for forgiving me, Kiran ❤️ I promise to do better every day.";
+
+    emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+        to_email: "mrityunjaykumar1156@gmail.com",
+        message: "Kiran accepted your apology ❤️"
+    });
+
+    createHearts();
+}
+
+function moveButton(btn){
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * 300 + "px";
+    btn.style.left = Math.random() * 300 + "px";
+}
+
+function createHearts(){
+    for(let i = 0; i < 25; i++){
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.bottom = "0px";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
+}
+
+</script>
+
+</body>
+</html>
